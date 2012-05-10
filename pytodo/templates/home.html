@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main %}
+<p>^_^</p>
+
+<ul>
+	{% for task in task_list %}
+	{% include "task_li.html" with this=task %}
+	{% empty %}
+	<li><em>Nothing here.</em></li>
+	{% endfor %}
+</ul>
+
+<form action="" method="post">
+<p><a href="{% url home %}">New task</a></p>
+
+{{ form.as_p }}
+{% csrf_token %}
+<p><input type="submit" /></p>
+
+
+</form>
+{% endblock %}
+
+
+
+

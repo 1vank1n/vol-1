@@ -1,0 +1,12 @@
+<li>{{ this.name }} ({{ this.date_added|date:"Y-m-d" }})
+	<a href="{% url del_task this.id %}">delete</a>
+	{% if this.subtasks.exists %}
+	<ul>
+		{% for subtask in this.subtasks.all %}
+			{% with template_name="task_li.html" %}
+			{% include template_name with this=subtask %}
+			{% endwith %}
+		{% endfor %}
+	</ul>
+	{% endif %}
+</li>
