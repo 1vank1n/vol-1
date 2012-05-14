@@ -4,16 +4,12 @@ from pytodo.main.models import Task
 
 
 def home(request):
-    return render(request, 'home.html', {'task_list': Task.objects.filter(parent=None)})
-
-
-def new_task(request):
-    form = TaskForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('home')
-
-    return render(request, 'new_task.html', {'form': form})
+	task_list = Task.objects.filter(parent=None)
+	form = TaskForm(request.POST or None)
+	print request.POST
+	if form.is_valid():
+		form.save()
+	return render(request, 'home.html', locals())
 
 
 def del_task(request, task_id):

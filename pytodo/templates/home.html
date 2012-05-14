@@ -12,10 +12,8 @@
 </ul>
 
 <form action="" method="post">
-<p><a href="{% url home %}">New task</a></p>
-
-{{ form.as_p }}
 {% csrf_token %}
+{{ form.as_p }}
 <p><input type="submit" /></p>
 
 
