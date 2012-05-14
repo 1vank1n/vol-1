@@ -6,7 +6,6 @@ from pytodo.main.models import Task
 def home(request):
 	task_list = Task.objects.filter(parent=None)
 	form = TaskForm(request.POST or None)
-	print request.POST
 	if form.is_valid():
 		form.save()
 	return render(request, 'home.html', locals())
